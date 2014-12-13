@@ -5,7 +5,7 @@
   <artifactId>owsx</artifactId>
   <version>0.8</version>
   <packaging>jar</packaging>
-  <!--name>Oracle Web service Extension</name-->
+  <!--name>Oracle Web service Example</name-->
   <name>owsx</name>
   <url>http://owsx.sf.net</url>
   <properties>
@@ -29,9 +29,6 @@
     <mvn.resources.version>2.6</mvn.resources.version>
     <mvn.source.version>2.2.1</mvn.source.version>
     <mvn.surefire.version>2.16</mvn.surefire.version>
-    <!-- Oracle 12c JDBC drivers can be used with previous versions of database -->
-    <osgi.ojdbc6-12c.version>12.1.0.1</osgi.ojdbc6-12c.version>
-    <osgi.ojdbc6-11g.version>11.2.0.3</osgi.ojdbc6-11g.version>
   </properties>
   <dependencies>
     <dependency>
@@ -59,16 +56,6 @@
         <artifactId>spring-xml</artifactId>
         <version>${spring.ws.version}</version>
     </dependency>    
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>osgi.ojdbc6.12c</artifactId>
-      <version>${osgi.ojdbc6-12c.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>osgi.ojdbc6</artifactId>
-      <version>${osgi.ojdbc6-11g.version}</version>
-    </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>org.aspectj-library</artifactId>
@@ -276,22 +263,9 @@
       </plugin>
     </plugins>
   </build>
-  <!--
-  <server>
-      <id>SourceForge</id>
-      <username>asdrury,owsx</username>
-      <password>Use ssh keys</password>
-  </server>
-  -->
   <developers>
       <developer>
-          <id>krishnamachary</id>
-      </developer>
-      <developer>
-          <id>jmjensen</id>
-      </developer>
-      <developer>
-          <id>asdrury</id>
+          <id>devnull5475</id>
           <roles>
             <role>architect</role>
             <role>developer</role>
@@ -304,8 +278,8 @@
           <url>scpexe://... ?</url>
       </repository>
       <site>
-          <id>owsx.sf.net</id>
-          <url>scp://shell.sourceforge.net/home/project-web/owsx/htdocs</url>
+          <id>owsx</id>
+          <url>git+ssh://github.com/devnull5475/SI_ORAWSV_POC</url>
       </site>
   </distributionManagement>
 </project>
