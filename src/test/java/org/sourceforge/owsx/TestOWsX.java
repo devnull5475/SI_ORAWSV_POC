@@ -9,12 +9,15 @@ import org.junit.BeforeClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
+/**
+ * Use JUnit tests to exercise ORAWSV POC examples.
+ */
 public class TestOWsX {
 
 	private static final String PROD_CONFIG = "src/main/resources/META-INF/spring/owsx-config.xml";
     private static final String TEST_CONFIG = "src/test/resources/META-INF/spring/test-config.xml";
     private ApplicationContext test = null;
-    private ApplicationContext prod = null;
+    private ApplicationContext owsx = null;
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -28,8 +31,8 @@ public class TestOWsX {
     public void setUp() throws Exception {
         this.test = new FileSystemXmlApplicationContext(TEST_CONFIG);
         assertNotNull("null==test.ac", this.test);
-        this.prod = new FileSystemXmlApplicationContext(PROD_CONFIG);
-        assertNotNull("null==prod.ac", this.prod);        
+        this.owsx = new FileSystemXmlApplicationContext(PROD_CONFIG);
+        assertNotNull("null==owsx.ac", this.owsx);        
     }
 
     @After
@@ -37,9 +40,15 @@ public class TestOWsX {
     }
     
     public void testSend01() throws Exception {
-    	if (null==this.prod || null==this.test) {this.setUp();}
-    	final PayRaiseWebServiceClient client = this.prod.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
+    	if (null==this.owsx || null==this.test) {this.setUp();}
+    	final PayRaiseWebServiceClient client = this.owsx.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
     	client.send(10000L, 0.10D);
+    }
+
+    public void testSend02() throws Exception {
+    	if (null==this.owsx || null==this.test) {this.setUp();}
+    	final PayRaiseWebServiceClient client = this.owsx.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
+    	client.send(10000L, 0.20D);
     }
 
 }

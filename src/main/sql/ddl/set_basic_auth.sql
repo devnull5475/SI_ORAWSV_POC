@@ -7,7 +7,7 @@ BEGIN
  l_configxml := DBMS_XDB.cfg_get();
  IF l_configxml.existsNode('/xdbconfig/sysconfig/protocolconfig/httpconfig/authentication/allow-mechanism') = 0 THEN
   -- Element should not be missing
-dbms_output.put_line (' allow-mechanism element is missing ');
+  dbms_output.put_line (' allow-mechanism element is missing ');
  ELSE
   -- Update existing element.
   SELECT updateXML

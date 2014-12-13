@@ -36,7 +36,7 @@
         
     <bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
         <constructor-arg ref="messageFactory"/>
-        <property name="defaultUri" value="${owsx.uri}"/>
+        <property name="defaultUri" value="${owsx.protocol}://${owsx.host}:${owsx.port}/${owsx.uri}"/>
     </bean>    
     
     <bean id="caller" class="org.sourceforge.owsx.PayRaiseWebServiceClientImpl">
@@ -49,10 +49,10 @@
         <property name="userAgent"><value>${owsx.useragent}</value></property>
     </bean>
     
-    <!--  Properties: go.bat contains: set APP_OPTS=-Druntime.env=dev|qa|v17|s97|v25|v02 -->
     <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
+                <!-- symlink [mklink|ln] META-INF to make expected path work in JUnit tests? -->
                 <value>src/main/resources/META-INF/spring/owsx.properties</value>
                 <!--value>META-INF/spring/owsx.properties</value-->
             </list>

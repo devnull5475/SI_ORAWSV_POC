@@ -15,10 +15,6 @@
     
     <!-- ******************************************************************* -->
     <!--  Properties                                                         -->
-    <!-- $ echo 'jdbc.url=jdbc:oracle:thin:@dbhost:1521:devdb' >> devdb.properties
-         $ echo 'jdbc.user=testuser' >> devdb.properties
-         $ echo 'jdbc.password=secret' >> devdb.properties                   -->
-    <!-- $ mvn -Dtest.sid=DEVDB test                                         -->                                        
     <!-- ******************************************************************* -->
     <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">

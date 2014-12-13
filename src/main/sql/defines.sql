@@ -1,14 +1,18 @@
-define version_=0.8-ALPHA
+prompt -- OWSX: Oracle Web service Example
+
+define version_=1.0
 
 define yes_=1
 define no_=0
-define uname_sz=100
 
 define use_log4plsql=1
 --define use_log4plsql=0
 
 define app_user=owsx
-define app_user_pwd=owsx_user
+define app_user_pwd='&&app_user._pwd'
+define orawsv_host='localhost'
+define orawsv_ip='127.0.0.1'
+define orawsv_uri='orawsv/OWSX/OWSX_UTL/PAY_RAISE'
 
 define app_tablespace=USERS
 prompt -- select tablespace_name, status from dba_tablespaces order by tablespace_name

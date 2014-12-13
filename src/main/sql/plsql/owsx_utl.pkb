@@ -1,4 +1,4 @@
-prompt -- Oracle Web service Extension
+prompt -- Oracle Web service Example
 
 prompt -- create or replace package body &&owsx_schema..owsx_utl
 set termout off
@@ -6,7 +6,7 @@ create or replace package body &&owsx_schema..owsx_utl
 is
 
  -------------------------------------------------------------------------------
- -- Oracle Web Service Extension
+ -- Oracle Web Service Example
  -------------------------------------------------------------------------------
 
  -------------------------------------------------------------------------------

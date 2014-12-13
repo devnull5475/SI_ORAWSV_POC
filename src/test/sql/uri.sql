@@ -1,6 +1,6 @@
 var url varchar2(4000)
 
-exec :url := 'http://&&app_user:&&app_user_pwd@localhost:'||dbms_xdb.getHttpPort()||'/orawsv/OWSX/OWSX_UTL/PAY_RAISE'
+exec :url := 'http://&&app_user:&&app_user_pwd@&&orawsv_host.:'||dbms_xdb.getHttpPort()||'&&orawsv_uri'
 print url
 
 set long 10000 pages 0
