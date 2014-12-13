@@ -1,0 +1,71 @@
+<definitions name="OWSX_UTL"
+    targetNamespace="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL"
+     elementFormDefault="qualified">
+      <xsd:element name="PAY_RAISEInput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="PERCENT_CHANGE_IN-NUMBER-IN" type="xsd:double"/>
+              <xsd:element name="NEW_SALARY_OUT-NUMBER-OUT">
+                <xsd:complexType/>
+              </xsd:element>
+              <xsd:element name="CURRENT_SALARY_IN-NUMBER-IN" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+
+
+      <xsd:element name="PAY_RAISEOutput">
+        <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="NEW_SALARY_OUT" type="xsd:double"/>
+            </xsd:sequence>
+          </xsd:complexType>
+      </xsd:element>
+   </xsd:schema>
+  </types>
+
+  <message name="PAY_RAISEInputMessage">
+    <part name="parameters" element="tns:PAY_RAISEInput"/>
+  </message>
+
+  <message name="PAY_RAISEOutputMessage">
+    <part name="parameters" element="tns:PAY_RAISEOutput"/>
+  </message>
+
+  <portType name="OWSX_UTLPortType">
+  <operation name="PAY_RAISE">
+      <input message="tns:PAY_RAISEInputMessage"/>
+      <output message="tns:PAY_RAISEOutputMessage"/>
+    </operation>
+  </portType>
+
+  <binding name="OWSX_UTLBinding"
+           type="tns:OWSX_UTLPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="PAY_RAISE">
+      <soap:operation
+ soapAction="PAY_RAISE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+  </binding>
+
+  <service name="OWSX_UTLService">
+    <documentation>Oracle Web Service</documentation>
+    <port name="OWSX_UTLPort" binding="tns:OWSX_UTLBinding">
+       <soap:address 
+             location="http://localhost:8080/orawsv/OWSX/OWSX_UTL"/>
+     </port>
+  </service>
+
+</definitions>

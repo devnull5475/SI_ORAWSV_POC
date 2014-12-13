@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:jmx="http://www.springframework.org/schema/integration/jmx"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                      http://www.springframework.org/schema/context
+                      http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                      http://www.springframework.org/schema/aop
+                      http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                      http://www.springframework.org/schema/integration/jmx
+                      http://www.springframework.org/schema/integration/jmx/spring-integration-jmx-2.0.xsd " >
+
+
+	<!--  Exporting Spring Integration Components as MBeans -->
+	<jmx:mbean-export default-domain="owsx"/>
+    <context:mbean-server/>
+
+    <!--
+        Instruct Spring to retrieve and apply @AspectJ aspects which are defined
+        as beans in this context (such as the CallMonitoringAspect below).
+    -->
+    <aop:aspectj-autoproxy/>
+
+    <!-- Exporter based on the @ManagedResource, @ManagedAttribute, and @ManagedOperation annotations. -->
+    <!--context:mbean-export/-->
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter" lazy-init="false">
+        <property name="beans">
+            <map>
+                <entry key="owsx:name=owsx.handler,type=handler" value-ref="caller" />
+            </map>
+        </property>
+        <property name="assembler">
+         	<bean class="org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler">
+        		<property name="methodMappings">
+        	    	<props>
+        	    	</props>
+        	    </property>
+			</bean>
+        </property>
+    </bean>
+
+</beans>

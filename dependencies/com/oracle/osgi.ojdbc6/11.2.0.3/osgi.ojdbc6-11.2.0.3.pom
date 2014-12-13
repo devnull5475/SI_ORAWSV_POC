@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<!-- http://nidget.wordpress.com/2011/07/21/how-to-osgify-an-oracle-jdbc-driver-with-spring-roo -->
+<!-- roo> addon create wrapper - -topLevelPackage roo.jdbc.ojdbc6 - -groupId com.oracle - -artifactId ojdbc6 - -version 11.2.0.3 - -vendorName "Oracle Corporation" - -licenseUrl http://www.oracle.com - -docUrl http://docs.oracle.com/cd/E11882_01/java.112/e16548/toc.htm -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.oracle</groupId>
+    <artifactId>osgi.ojdbc6</artifactId>
+    <packaging>bundle</packaging>
+    <version>11.2.0.3</version>
+    <name>osgi.ojdbc6</name>
+    <description>This bundle wraps Oracle 11.2 JDBC drivers for Java 1.6. It uses the standard Maven artifact: ${pkgArtifactId}-${pkgVersion}.</description>
+    <scm>
+        <tag>HEAD</tag>
+        <!-- ... -->
+    </scm>
+    <properties>
+        <pkgArtifactId>ojdbc6</pkgArtifactId>
+        <pkgVersion>11.2.0.3</pkgVersion>
+        <osgiVersion>${pkgVersion}</osgiVersion>
+        <pkgVendor>Oracle Corporation</pkgVendor>
+        <pkgDocUrl>http://docs.oracle.com/cd/E11882_01/java.112/e16548/toc.htm</pkgDocUrl>
+        <pkgLicense>http://www.oracle.com</pkgLicense>
+        <repo.folder>com/oracle/ojdbc6/11.2.0.3.0</repo.folder>
+        <google.code.project.name>${project.name}</google.code.project.name>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <!-- mvn install:install-file -Dfile=lib/ojdbc6.jar -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3.0 -Dpackaging=jar -->
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3.0</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+    <!--
+    <scm>
+        <connection>scm:svn:https://${google.code.project.name}.googlecode.com/svn/trunk</connection>
+        <developerConnection>scm:svn:https://${google.code.project.name}.googlecode.com/svn/trunk</developerConnection>
+        <url>http://code.google.com/p/${google.code.project.name}/source/browse</url>
+    </scm>
+    -->
+    <distributionManagement>
+        <repository>
+            <id>Google Code</id>
+            <url>dav:https://${google.code.project.name}.googlecode.com/svn/repo</url>
+        </repository>
+    </distributionManagement>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>1.0-beta-6</version>
+            </extension>
+        </extensions>
+        <plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-install-plugin</artifactId>
+                 <version>2.5.1</version>
+                 <executions>
+                     <execution>
+                         <phase>install</phase>
+                         <configuration>
+                             <finalName>${project.artifactId}</finalName>
+                             <version>${project.version.number}</version>
+                         </configuration>
+                     </execution>
+                </executions>
+            </plugin>
+            <!--
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.3</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
+            <plugin>
+                <!-- http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html -->
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <remoteOBR>true</remoteOBR>
+                    <bundleUrl>httppgp://${google.code.project.name}.googlecode.com/svn/repo/${repo.folder}/${project.artifactId}/${project.version}/${project.artifactId}-${project.version}.jar</bundleUrl>
+                    <instructions>
+                        <!-- http://www.aqute.biz/Bnd/Format -->
+                        <Export-Package>*;-split-package:=merge-first</Export-Package>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Import-Package>*;resolution:=optional</Import-Package>
+                        <Bundle-Vendor>${pkgVendor} (wrapped into an OSGi bundle by the Spring Roo project build system)</Bundle-Vendor>
+                        <Bundle-DocURL>${pkgDocUrl}</Bundle-DocURL>
+                        <Bundle-License>${pkgLicense}</Bundle-License>
+                        <Implementation-Title>JDBC</Implementation-Title>
+                        <Main-Class>oracle.jdbc.OracleDriver</Main-Class>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,7 @@
+.settings
+.svn
+.classpath
+.project
+target
+tmp
+.gitattributes

@@ -1,0 +1,47 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<!-- scp index.html asdrury/[spring X 1000]@web.sourceforge.net:/home/project-web/ofsx/htdocs/ -->
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <link rel="shortcut icon" href="http://gmr.sourceforge.net/images/commander.png">
+ <link rel="icon" type="image/ico" href="http://gmr.sourceforge.net/images/commander.png">
+ <title>OWsX</title>
+ <style type="text/css">
+  <!--
+   span {display:inline;}
+   .r   {color:red;}
+   .s   {font-size:small;}
+  -->
+  </style>
+</head>
+<body bgcolor="white">
+
+<h1><span class="r">O</span>racle <span class="r">W</span>eb <span class="r">s</span>ervice E<span class="r">x</span>tension</h1>
+
+<h3>Links</h3>
+<ol>
+    <li><a href="http://docs.oracle.com/cd/B28359_01/appdev.111/b28369/xdb02rep.htm#i1011095">Getting Started with Oracle XML DB</a></li>
+    <li><a href="http://docs.oracle.com/cd/B28359_01/appdev.111/b28369/appaman.htm#i641205">Configuring Oracle XML DB Using <code>xdbconfig.xml</code></a>
+        <ul>
+            <li><code>SQL&gt; select v.res.getClobVal() as xml from resource_view v where any_path='/xdbconfig.xml' ;</code></li>
+            <li><a href="http://docs.oracle.com/cd/B28359_01/appdev.111/b28369/xdb_web_services.htm#CHDIICEJ">Use <code>DBMS_XDB</code> to add <code>OraWsv</code> to <code>xdbconfig.xml</code></a></li>
+            <li><a href="https://docs.oracle.com/cd/E11882_01/appdev.112/e40758/d_epg.htm#ARPLS193"><code>DBMS_EPG</code></a>
+            <!--
+            <p>The <code>DBMS_EPG</code> package is a platform on which PL/SQL users develop and deploy PL/SQL Web applications. The embedded PL/SQL gateway is an embedded version of the gateway that runs in the XML database HTTP server in the Oracle database. It provides the core features of <code>mod_plsql</code> in the database but does not require the Oracle HTTP server powered by Apache.</p>
+            <p>In order to make a PL/SQL application accessible from a browser by way of HTTP, a <b>Database Access Descriptor</b> (DAD) must be created and mapped to a virtual path. A DAD is a set of configuration values used for database access and the virtual path mapping makes the application accessible under a virtual path of the XML DB HTTP Server. A DAD is represented as a servlet in XML DB HTTP Server.</p>
+            -->
+            </li>
+        </ul>
+    <li><a href="http://docs.oracle.com/cd/B28359_01/appdev.111/b28369/xdb_web_services.htm#CHDFGIBD">Accessing PL/SQL Stored Procedures Using a Web Service</a></li>
+    <!--li><a href="http://docs.oracle.com/cd/B28359_01/appdev.111/b28369/xdb_web_services.htm#CHDDBCHB">Using Native Oracle XML DB Web Services</a></li-->
+        <ul>
+            <li><a href="http://localhost:8080/orawsv/OWSX/OWSX_UTL?wsdl">OWsX WSDL</a></li> 
+            <li><a href="https://community.oracle.com/message/10283913#10283913">Mark Drake's Example</a></li>
+        </ul>
+    </li>
+    <li><a href="http://cxf.apache.org/docs/wsdl-to-javascript.html">wsdl2js</a></li>
+</ol>
+
+    
+</body>
+</html>

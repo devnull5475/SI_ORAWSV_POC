@@ -1,0 +1,32 @@
+Manifest-Version: 1.0
+Specification-Vendor: <a href="http://ofsx.sourceforge.net">OWsX</a>
+Implementation-Vendor: <a href="http://ofsx.sourceforge.net">OWsX</a>
+Bundle-Personality: Bundle
+Bundle-ManifestVersion: 2
+Import-Package:
+ org.springframework.scheduling.concurrent;version="[${spring.version},${spring.version}]",
+ org.apache.log4j;version="0"
+Import-Bundle:
+ org.springframework.context;version="[${spring.version},${spring.version}]",
+ org.springframework.transaction;version="[${spring.version},${spring.version}]",
+ org.springframework.aop;version="[${spring.version},${spring.version}]",
+ com.springsource.org.aopalliance;version="[1.0.0,1.0.0]",
+ org.springframework.core;version="[${spring.version},${spring.version}]",
+ org.springframework.ws;version="[${spring.ws.version},${spring.ws.version}]",
+ org.apache.httpcomponents;version="[${apache.http.version},${apache.http.version}]",
+ org.springframework.beans;version="[${spring.version},${spring.version}]",
+ org.springframework.integration;version="[${spring.integration.version},${spring.integration.version}]",
+ org.springframework.integration.file;version="[${spring.integration.file.version},${spring.integration.file.version}]",
+ org.springframework.integration.jms;version="[${spring.integration.version},${spring.integration.version}]",
+ org.springframework.integration.mail;version="[${spring.integration.version},${spring.integration.version}]",
+ org.springframework.integration.jmx;version="[${spring.integration.version},${spring.integration.version}]",
+ com.springsource.javax.jms;version="1.1.0"
+Import-Template:
+ org.springframework.integration.*;version="[${spring.integration.version},${spring.integration.version}]",
+ org.springframework.*;version="[${spring.version},${spring.version}]",
+ *;version="0"
+Bundle-SymbolicName: owsx
+Bundle-Version: ${project.version.number}
+Implementation-Version: ${project.version.number}
+Specification-Version: ${project.version.number}
+Bundle-Name: Oracle Web service Extension

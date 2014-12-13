@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="owsx" resourceRoot="" soapui-version="5.0.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="OWSX_UTLBinding" type="wsdl" bindingName="{http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL}OWSX_UTLBinding" soapVersion="1_1" anonymous="optional" definition="file:/F:/projects/owsx/src/test/owsx.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\F:\projects\owsx\src\test\owsx.wsdl"><con:part><con:url>file:\F:\projects\owsx\src\test\owsx.wsdl</con:url><con:content><![CDATA[<definitions name="OWSX_UTL" targetNamespace="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema targetNamespace="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL" elementFormDefault="qualified">
+      <xsd:element name="PAY_RAISEInput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PERCENT_CHANGE_IN-NUMBER-IN" type="xsd:double"/>
+            <xsd:element name="NEW_SALARY_OUT-NUMBER-OUT">
+              <xsd:complexType/>
+            </xsd:element>
+            <xsd:element name="CURRENT_SALARY_IN-NUMBER-IN" type="xsd:double"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="PAY_RAISEOutput">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NEW_SALARY_OUT" type="xsd:double"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="PAY_RAISEInputMessage">
+    <part name="parameters" element="tns:PAY_RAISEInput"/>
+  </message>
+  <message name="PAY_RAISEOutputMessage">
+    <part name="parameters" element="tns:PAY_RAISEOutput"/>
+  </message>
+  <portType name="OWSX_UTLPortType">
+    <operation name="PAY_RAISE">
+      <input message="tns:PAY_RAISEInputMessage"/>
+      <output message="tns:PAY_RAISEOutputMessage"/>
+    </operation>
+  </portType>
+  <binding name="OWSX_UTLBinding" type="tns:OWSX_UTLPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="PAY_RAISE">
+      <soap:operation soapAction="PAY_RAISE"/>
+      <input>
+        <soap:body parts="parameters" use="literal"/>
+      </input>
+      <output>
+        <soap:body parts="parameters" use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="OWSX_UTLService">
+    <documentation>Oracle Web Service</documentation>
+    <port name="OWSX_UTLPort" binding="tns:OWSX_UTLBinding">
+      <soap:address location="http://localhost:8080/orawsv/OWSX/OWSX_UTL"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/orawsv/OWSX/OWSX_UTL</con:endpoint></con:endpoints><con:operation isOneWay="false" action="PAY_RAISE" name="PAY_RAISE" bindingOperationName="PAY_RAISE" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/orawsv/OWSX/OWSX_UTL</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:owsx="http://xmlns.oracle.com/orawsv/OWSX/OWSX_UTL">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <owsx:PAY_RAISEInput>
+         <owsx:PERCENT_CHANGE_IN-NUMBER-IN>0.10</owsx:PERCENT_CHANGE_IN-NUMBER-IN>
+         <owsx:NEW_SALARY_OUT-NUMBER-OUT/>
+         <owsx:CURRENT_SALARY_IN-NUMBER-IN>100000</owsx:CURRENT_SALARY_IN-NUMBER-IN>
+      </owsx:PAY_RAISEInput>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>owsx</con:username><con:password>owsx_user</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>true</con:preemptive><con:authType>Preemptive</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="PAY_RAISE"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
