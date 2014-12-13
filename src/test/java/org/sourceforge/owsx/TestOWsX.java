@@ -14,7 +14,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  */
 public class TestOWsX {
 
-	private static final String PROD_CONFIG = "src/main/resources/META-INF/spring/owsx-config.xml";
+    private static final String PROD_CONFIG = "src/main/resources/META-INF/spring/owsx-config.xml";
     private static final String TEST_CONFIG = "src/test/resources/META-INF/spring/test-config.xml";
     private ApplicationContext test = null;
     private ApplicationContext owsx = null;
@@ -40,15 +40,15 @@ public class TestOWsX {
     }
     
     public void testSend01() throws Exception {
-    	if (null==this.owsx || null==this.test) {this.setUp();}
-    	final PayRaiseWebServiceClient client = this.owsx.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
-    	client.send(10000L, 0.10D);
+        if (null==this.owsx || null==this.test) {this.setUp();}
+        final PayRaiseWebServiceClient caller = this.owsx.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
+        caller.send(10000L, 0.10D);
     }
 
     public void testSend02() throws Exception {
-    	if (null==this.owsx || null==this.test) {this.setUp();}
-    	final PayRaiseWebServiceClient client = this.owsx.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
-    	client.send(10000L, 0.20D);
+        if (null==this.owsx || null==this.test) {this.setUp();}
+        final PayRaiseWebServiceClient caller = this.owsx.getBean("caller", PayRaiseWebServiceClientImpl.class) ;
+        caller.send(10000L, 0.20D);
     }
 
 }

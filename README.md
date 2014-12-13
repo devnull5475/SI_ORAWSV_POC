@@ -17,4 +17,5 @@ SOA scenario:
 * [Accessing PL/SQL Stored Procedures Using a Web Service](http://docs.oracle.com/cd/B28359_01/appdev.111/b28369/xdb_web_services.htm#CHDFGIBD)
 * [Mark Drake's ORAWSV example](https://community.oracle.com/message/10283913#10283913)
 * [Spring Integration](http://projects.spring.io/spring-integration/)
+* [Apache HttpClient Tutorial](http://hc.apache.org/httpcomponents-client-ga/tutorial/html/index.html)
 * [SoapUI](http://www.soapui.org/)
