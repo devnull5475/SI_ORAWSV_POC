@@ -12,16 +12,16 @@
         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
 	<import resource="mbean-config.xml"/>
+
 	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <!-- <value>META-INF/spring/${runtime.env}.doc_gen.properties</value> -->
-                <value>WEB-INF/dev.doc_gen.properties</value>
+                <value>WEB-INF/owsx.properties</value>
             </list>
         </property>
     </bean>
 
-	<context:component-scan base-package="us.ny.state.otda.integration.controller" />
+	<context:component-scan base-package="org.sourceforge.owsx" />
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="300000"/><!-- Max size in bytes. -->
@@ -30,15 +30,5 @@
 	<!-- To enable @RequestMapping process on type level and method level -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-	
-	<bean id="fopUtilBean" class="us.ny.state.otda.integration.fop.FopUtilImpl" parent="abstractDvu" >
-        <property name="docInfoUtil"><ref bean="docInfoUtil"/></property>
-    </bean>
-   
-    <import resource="docInfo.xml"/>
-     
-	<bean name="abstractDvu" class="us.ny.state.otda.integration.jdbc_util.AbstractJdbcDaoSupport" abstract="true">
-        <property name="debugVolumeUtil"><ref bean="debugVolumeUtil"/></property>
-    </bean>   
     
 </beans>
