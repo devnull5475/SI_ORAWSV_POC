@@ -52,6 +52,16 @@
         <version>${spring.ws.version}</version>
     </dependency>
     <dependency>
+	    <groupId>org.springframework.ws</groupId>
+	    <artifactId>spring-ws-security</artifactId>
+        <version>${spring.ws.version}</version>
+    </dependency>
+    <dependency>
+	    <groupId>org.springframework.ws</groupId>
+	    <artifactId>spring-ws-core</artifactId>
+        <version>${spring.ws.version}</version>
+    </dependency>
+    <dependency>
         <groupId>org.springframework.ws</groupId>
         <artifactId>spring-xml</artifactId>
         <version>${spring.ws.version}</version>
@@ -131,11 +141,6 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
       <version>${spring.version}</version>
     </dependency>
     <dependency>
