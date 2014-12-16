@@ -16,6 +16,7 @@
     <spring.integration.version>2.0.5.RELEASE</spring.integration.version>
     <spring.ws.version>2.2.0.RELEASE</spring.ws.version>
     <spring.integration.file.version>2.0.5.RELEASE</spring.integration.file.version>
+    <javax.servlet.version>3.0.1</javax.servlet.version>
     <!--apache.http.version>4.4-beta1</apache.http.version-->
     <apache.http.version>4.3.4</apache.http.version>
     <log4unit.version>0.2.0_1</log4unit.version>
@@ -65,7 +66,13 @@
         <groupId>org.springframework.ws</groupId>
         <artifactId>spring-xml</artifactId>
         <version>${spring.ws.version}</version>
-    </dependency>    
+    </dependency>  
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${javax.servlet.version}</version>
+        <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>org.aspectj-library</artifactId>
