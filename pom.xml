@@ -12,24 +12,25 @@
     <maven.test.skip>false</maven.test.skip>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.version.number>${project.version}</project.version.number>
-    <spring.version>3.0.5.RELEASE</spring.version>
-    <spring.integration.version>2.0.5.RELEASE</spring.integration.version>
+    <spring.version>4.1.3.RELEASE</spring.version>
+    <spring.integration.version>4.1.1.RELEASE</spring.integration.version>
     <spring.ws.version>2.2.0.RELEASE</spring.ws.version>
-    <spring.integration.file.version>2.0.5.RELEASE</spring.integration.file.version>
+    <spring.integration.file.version>4.1.1.RELEASE</spring.integration.file.version>
     <javax.servlet.version>3.0.1</javax.servlet.version>
     <!--apache.http.version>4.4-beta1</apache.http.version-->
-    <apache.http.version>4.3.4</apache.http.version>
+    <apache.http.version>4.3.3</apache.http.version>
     <log4unit.version>0.2.0_1</log4unit.version>
+    <log4j.version>1.2.16</log4j.version>
     <mvn.aspectj.version>1.7.1.RELEASE</mvn.aspectj.version>
-    <mvn.assembly.version>2.4</mvn.assembly.version>
-    <mvn.buildnumber.version>1.2</mvn.buildnumber.version>
-    <mvn.compiler.version>3.1</mvn.compiler.version>
-    <mvn.install.version>2.5.1</mvn.install.version>
-    <mvn.jar.version>2.4</mvn.jar.version>
-    <mvn.javadoc.version>2.9.1</mvn.javadoc.version>
-    <mvn.resources.version>2.6</mvn.resources.version>
-    <mvn.source.version>2.2.1</mvn.source.version>
-    <mvn.surefire.version>2.16</mvn.surefire.version>
+    <mvn.assembly.version>2.52</mvn.assembly.version>
+    <mvn.compiler.version>3.2</mvn.compiler.version>
+    <mvn.install.version>2.5.2</mvn.install.version>
+    <mvn.jar.version>2.5</mvn.jar.version>
+    <mvn.javadoc.version>2.10.1</mvn.javadoc.version>
+    <mvn.resources.version>2.7</mvn.resources.version>
+    <mvn.source.version>2.4</mvn.source.version>
+    <mvn.surefire.version>2.18</mvn.surefire.version>
+    <mvn.war.version>2.5</mvn.war.version>
   </properties>
   <dependencies>
     <dependency>
@@ -40,50 +41,54 @@
     <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpcore</artifactId>
-        <version>4.3.3</version>
-    </dependency>  
+        <version>${apache.http.version}</version>
+    </dependency>
     <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient-osgi</artifactId>
-        <version>4.3.4</version>
+        <version>${apache.http.version}</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.ws</groupId>
         <artifactId>spring-ws-core</artifactId>
         <version>${spring.ws.version}</version>
     </dependency>
+    <!--
     <dependency>
-	    <groupId>org.springframework.ws</groupId>
-	    <artifactId>spring-ws-security</artifactId>
+        <groupId>org.springframework.ws</groupId>
+        <artifactId>spring-ws-security</artifactId>
         <version>${spring.ws.version}</version>
     </dependency>
+    -->
     <dependency>
-	    <groupId>org.springframework.ws</groupId>
-	    <artifactId>spring-ws-core</artifactId>
+        <groupId>org.springframework.ws</groupId>
+        <artifactId>spring-ws-core</artifactId>
         <version>${spring.ws.version}</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.ws</groupId>
         <artifactId>spring-xml</artifactId>
         <version>${spring.ws.version}</version>
-    </dependency>  
+    </dependency>
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
         <version>${javax.servlet.version}</version>
         <scope>provided</scope>
     </dependency>
+    <!--
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>org.aspectj-library</artifactId>
       <type>libd</type>
       <version>${mvn.aspectj.version}</version>
-    </dependency>    
+    </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi_R4_core</artifactId>
       <version>1.0</version>
     </dependency>
+    -->
     <dependency>
       <groupId>org.junit</groupId>
       <artifactId>com.springsource.org.junit</artifactId>
@@ -93,7 +98,7 @@
     <dependency>
       <groupId>org.apache.log4j</groupId>
       <artifactId>com.springsource.org.apache.log4j</artifactId>
-      <version>1.2.16</version>
+      <version>${log4j.version}</version>
     </dependency>
     <dependency>
       <groupId>log4unit</groupId>
@@ -221,6 +226,24 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${mvn.war.version}</version>
+        <configuration>
+        <!-- http://maven.apache.org/plugins/maven-war-plugin/examples/including-excluding-files-from-war.html -->
+          <packagingExcludes>
+             WEB-INF/lib/*com.springsource.slf4j.api*.jar,
+             WEB-INF/lib/*servlet*.jar
+          </packagingExcludes>
+          <webResources>
+            <resource>
+              <directory>${project.build.sourceDirectory}</directory>
+              <targetPath>sources</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${mvn.compiler.version}</version>
         <configuration>
@@ -259,7 +282,7 @@
       </plugin>
       <!--
        $ mvn javadoc:javadoc
-       $ mvn javadoc:test-javadoc 
+       $ mvn javadoc:test-javadoc
        -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
