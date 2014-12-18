@@ -9,7 +9,12 @@ SOA scenario:
 * [**ORAWSV**](http://docs.oracle.com/cd/E11882_01/appdev.112/e23094/xdb_web_services.htm#ADXDB3900): The `ORAWSV` servlet runs in Oracle's JVM (as if Oracle itself, rather than, say, Tomcat, were the servlet container).
 * **SOAP Web Service**: PL/SQL exposed as a SOAP web service by the `ORAWSV` servlet: `https://${ORACLE_HOST}:8080/orawsv/OWSX/OWSX_UTL/PAY_RAISE`
 * **SOAP Client**: Use [Spring Integration](http://projects.spring.io/spring-integration/) to make SOAP call that invokes `owsx_utl.pay_raise`.
-* **RESTful Adapter**: Use Spring Integration to create a RESTful web service whose handler makes the SOAP call to `owsx_utl.pay_raise`.
+* **RESTful Adapter**: Use Spring Integration to create a RESTful web service whose handler accepts a simple `GET` request, makes the SOAP call to `owsx_utl.pay_raise`, & hands back response.
+
+###What you'll need
+
+* [Oracle XE](http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm)
+* [Apache Maven](http://maven.apache.org/index.html)
 
 ###Links
 
