@@ -54,7 +54,7 @@
             <list>
                 <!-- symlink [mklink|ln] META-INF to make expected path work in JUnit tests? -->
                 <value>src/main/resources/META-INF/spring/owsx.properties</value>
-                <!--value>META-INF/spring/owsx.properties</value-->
+                <!-->value>META-INF/spring/owsx.properties</value-->
             </list>
         </property>
     </bean>

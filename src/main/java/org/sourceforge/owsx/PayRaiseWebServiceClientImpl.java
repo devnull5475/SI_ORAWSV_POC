@@ -2,6 +2,8 @@ package org.sourceforge.owsx;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.Writer;
 
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -39,12 +41,22 @@ public class PayRaiseWebServiceClientImpl implements PayRaiseWebServiceClient, I
 
 	@Override
 	public void send(final long curr_sal, final double percent_increase) throws Exception {
-		final String xml = this.getSoapRequestXml_(curr_sal, percent_increase); System.err.println(xml);
+		final String xml = this.getSoapRequestXml_(curr_sal, percent_increase); log.debug(xml);
 		StreamSource source = new StreamSource(new StringReader(xml));
 		StreamResult result = new StreamResult(System.out);		
 		this.ws.sendSourceAndReceiveToResult(source, result);
-		// TODO return new raised salary
 	}
+	
+	@Override
+	public String get(final long curr_sal, final double percent_increase) throws Exception {
+		final String xml = this.getSoapRequestXml_(curr_sal, percent_increase); log.debug(xml);
+		Writer writer = new StringWriter();
+		StreamSource source = new StreamSource(new StringReader(xml));
+		StreamResult result = new StreamResult(writer);		
+		this.ws.sendSourceAndReceiveToResult(source, result);
+		final String response = writer.toString() ; log.debug(response);
+		return response ;
+	}	
 
 	private String getSoapRequestXml_(final long curr_sal, final double percent_increase) {
 		return new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>")

@@ -10,7 +10,7 @@
   </appender>
   -->
   <appender name="file" class="org.apache.log4j.RollingFileAppender">
-    <param name="file" value="D:/TEMP/owsx_utl.log"/>
+    <param name="file" value="D:/TEMP/owsx.log"/>
     <param name="maxFileSize" value="4096KB"/>
     <param name="maxBackupIndex" value="20"/>
     <param name="append" value="true" />
