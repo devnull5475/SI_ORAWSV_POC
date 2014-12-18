@@ -11,7 +11,24 @@
                       http://www.springframework.org/schema/integration
                       http://www.springframework.org/schema/integration/spring-integration-2.1.xsd
                       http://www.springframework.org/schema/integration/file
-                      http://www.springframework.org/schema/integration/file/spring-integration-file-2.1.xsd">                                            
+                      http://www.springframework.org/schema/integration/file/spring-integration-file-2.1.xsd"> 
+                              
+    <!-- Used by REST client -->
+    <bean id="soap.delegate" class="org.sourceforge.owsx.PayRaiseWebServiceClientImpl">
+        <property name="webServiceTemplate"><ref bean="webServiceTemplate"/></property>
+        <property name="credentials">
+            <bean class="org.apache.http.auth.UsernamePasswordCredentials">
+                <constructor-arg value="${owsx.uname}:${owsx.password}"/>
+            </bean>
+        </property>        
+        <property name="userAgent"><value>${owsx.useragent}</value></property>
+    </bean>    
+    <!--bean id="messageFactory" class="org.springframework.ws.soap.axiom.AxiomSoapMessageFactory"/-->
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>        
+    <bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="defaultUri" value="${owsx.protocol}://${owsx.host}:${owsx.port}/${owsx.uri}"/>
+    </bean>                                                                 
     
     <!-- ******************************************************************* -->
     <!--  Properties                                                         -->
