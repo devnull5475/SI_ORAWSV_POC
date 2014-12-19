@@ -28,15 +28,15 @@ SOA, web service scenario:
 ####ORAWSV SOAP Service
 1. Ensure Oracle available. If necessary, install [Oracle XE](http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm).
 2. Install [Log4PLSQL](http://log4plsql.sourceforge.net/).
-3. Build `OWSX` schema in Oracle. See `src/main/sql/patch.sql`.
+3. Build `OWSX` schema in Oracle. See `src/main/sql/patch.sql`. (NB: If Tomcat & Oracle are both to run on same host, then Tomcat port should be different from `ORAWSV` port.)
 4. Use `admin/acl_info.sql` to ensure permissions right.
 5. Test HTTP access to PL/SQL using `src/test/sql/ws.sql`.
 ####Java RESTful & SOAP Client
 1. Ensure [Java](http://www.oracle.com/technetwork/java/javase/downloads/index.html), [Maven](http://maven.apache.org/index.html) &
-   [Tomcat](http://tomcat.apache.org/) are installed.
+   [Tomcat](http://tomcat.apache.org/) are installed. (NB: If Tomcat & Oracle are both to run on same host, then Tomcat port should be different from `ORAWSV` port.)
 2. Use `$ mvn compile test` & `mvn war:war` to build client.
 3. Deploy resulting WAR file to Tomcat.
-4. Test RESTful client using `https://${ORACLE_HOST}:${ORACLE_PORT}/service/index.jsp`.
+4. Test RESTful client using `http://${TOMCAT_HOST}:${TOMCAT_PORT}/owsx-${VERSION}/index.jsp`.
 
 ###Links
 
