@@ -8,7 +8,7 @@ SOA, web service scenario:
 ####Server
 * **PL/SQL**: Domain business rules & logic written in PL/SQL, `OWSX.OWSX_UTL.PAY_RAISE`.
 * [**ORAWSV**](http://docs.oracle.com/cd/E11882_01/appdev.112/e23094/xdb_web_services.htm#ADXDB3900): The `ORAWSV` servlet runs in Oracle's JVM (as if Oracle itself, rather than, say, Tomcat, were the servlet container).
-* **SOAP Web Service**: PL/SQL is exposed as a SOAP web service by the `ORAWSV` servlet. URL: `https://${ORACLE_HOST}:8080/orawsv/OWSX/OWSX_UTL/PAY_RAISE`
+* **SOAP Web Service**: PL/SQL is exposed as a SOAP web service by the `ORAWSV` servlet. URL: `https://${ORACLE_HOST}:${ORACLE_PORT}/orawsv/OWSX/OWSX_UTL/PAY_RAISE`
 
 ####Client
 * **SOAP Client**: Use [Spring Integration](http://projects.spring.io/spring-integration/) to make SOAP call that invokes `OWSX_UTL.PAY_RAISE`.
@@ -36,6 +36,7 @@ SOA, web service scenario:
    [Tomcat](http://tomcat.apache.org/) are installed.
 2. Use `$ mvn compile test` & `mvn war:war` to build client.
 3. Deploy resulting WAR file to Tomcat.
+4. Test RESTful client using `https://${ORACLE_HOST}:${ORACLE_PORT}/service/index.jsp`.
 
 ###Links
 
