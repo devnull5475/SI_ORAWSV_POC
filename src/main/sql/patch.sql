@@ -33,6 +33,9 @@ pause  -- Hit Enter to continue or Ctl+C to abort . . .
 -- App user
 -------------------------------------------------------------------------------
 @ddl/create_user
+prompt
+prompt -- @admin/acl_info
+prompt
 
 -------------------------------------------------------------------------------
 -- PL/SQL
